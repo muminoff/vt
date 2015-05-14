@@ -1,5 +1,6 @@
 *.log
 *.pot
 *.pyc
+*.pid
 __pycache__/
 local_settings.py
