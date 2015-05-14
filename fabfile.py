@@ -14,6 +14,7 @@ env.key_filename = '/home/sardor/.ssh/id_rsa.pub'
 ROOT = '/home/vt/'
 CODE_ROOT = '%s/vt-app' % ROOT
 LOCAL_SETTINGS = '%s/config/production.py' % CODE_ROOT
+LOCAL_PYTHON = '%s/vt-env/bin/python' % ROOT
 GUNICORN = '/usr/local/bin/gunicorn'
 
 
@@ -26,7 +27,7 @@ def git_pull():
 @task
 def migrate():
     with cd(CODE_ROOT):
-        run('./manage.py migrate core')
+        run('{} ./manage.py migrate core'.format(LOCAL_PYTHON))
 
 
 @task
