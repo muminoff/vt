@@ -12,7 +12,7 @@ env.key_filename = '/home/sardor/.ssh/id_rsa.pub'
 
 
 ROOT = '/home/vt/'
-CODE_ROOT = '%s/vt-app' % ROOT
+CODE_ROOT = '%svt-app' % ROOT
 LOCAL_SETTINGS = '%s/config/production.py' % CODE_ROOT
 LOCAL_PYTHON = '%s/vt-env/bin/python' % ROOT
 GUNICORN = '/usr/local/bin/gunicorn'
