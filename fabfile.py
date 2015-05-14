@@ -24,6 +24,12 @@ def git_pull():
 
 
 @task
+def migrate():
+    with cd(CODE_ROOT):
+        run('./manage.py migrate core')
+
+
+@task
 def install_requirements():
     print(colors.cyan('Installing requirements...', bold=True))
     with cd(CODE_ROOT):
