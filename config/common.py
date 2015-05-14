@@ -43,7 +43,11 @@ LOCAL_APPS = (
     'core',
 )
 
-INSTALLED_APPS = BASE_APPS + LOCAL_APPS
+THIRD_PARTY_APPS = (
+    'rest_framework',
+)
+
+INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
