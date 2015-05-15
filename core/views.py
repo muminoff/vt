@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from core.models import User
 from core.serializers import UserSerializer
 
@@ -9,12 +10,22 @@ def api_doc(request):
     return render(request, 'api_doc.html')
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def user_collection(request):
+
     if request.method == 'GET':
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
+
+    elif request.method == 'POST':
+        data = {'username': request.DATA.get('username'), 'phone_number': request.DATA.get('phone_number')}
+        serializer = UserSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
