@@ -31,6 +31,12 @@ def migrate():
 
 
 @task
+def fake_migrate():
+    with cd(CODE_ROOT):
+        run('{} ./manage.py migrate core'.format(LOCAL_PYTHON))
+
+
+@task
 def collectstatic():
     with cd(CODE_ROOT):
         run('{} ./manage.py collectstatic --noinput'.format(LOCAL_PYTHON))
