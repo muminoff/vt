@@ -5,3 +5,5 @@ Markdown==2.6.2
 django-filter==0.10.0
 django-pipeline==1.5.0
 jsmin==2.1.1
+djangorestframework-yaml==1.0.2
+djangorestframework-xml==1.0.1
