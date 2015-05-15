@@ -34,15 +34,11 @@
                         <div class="container-fluid">
                             <span>
                                 {% block branding %}
-                                <h4>VT API</h4>
+                                <a class="brand" href="http://muminoff.com">VT API</a>
                                 {% endblock %}
                             </span>
-                            <ul class="nav pull-left">
-                            {% for k, v in menus.items %}
-                                <li {% if v.active %}class="active"{% endif %}>
-                                    <a href="{% url k %}">{{ v.title }}</a>
-                                </li>
-                            {% endfor %}
+                            <ul class="nav navbar-nav">
+                            <li><a href="/">Home</a></li>
                             </ul>
                         </div>
                     </div>
