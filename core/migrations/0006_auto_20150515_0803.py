@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='section',
             name='owner',
-            field=models.ForeignKey(default='VT user', to='core.User'),
+            field=models.ForeignKey(default=None, to='core.User'),
             preserve_default=False,
         ),
     ]
