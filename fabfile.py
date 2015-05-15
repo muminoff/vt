@@ -31,6 +31,12 @@ def migrate():
 
 
 @task
+def collectstatic():
+    with cd(CODE_ROOT):
+        run('{} ./manage.py collectstatic --noinput'.format(LOCAL_PYTHON))
+
+
+@task
 def install_requirements():
     print(colors.cyan('Installing requirements...', bold=True))
     with cd(CODE_ROOT):
