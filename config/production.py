@@ -1,3 +1,3 @@
 from config.common import *
 
-DEBUG=False
+DEBUG = False
