@@ -11,15 +11,25 @@ class User(models.Model):
         db_table = 'users'
         ordering = ['-last_seen', 'joined_date']
 
-    pass
+    def __unicode__(self):
+        return u"{username} [{phone_number}]".format(username=self.username, phone_number=self.phone_number)
 
 
 class Section(models.Model):
+    owner = models.ForeignKey('User', null=False, blank=False)
+    name = models.CharField(max_length=64, null=False, blank=False, unique=True)
+    description = models.CharField(max_length=255, null=False, blank=False)
+    category = models.CharField(max_length=64, null=False, blank=False)
+    ordering_number = models.PositiveSmallIntegerField()
+    created_date = models.DateTimeField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'sections'
+        ordering = ['ordering_number']
 
-    pass
+    def __unicode__(self):
+        return u"{name} [{category}]".format(name=self.name, category=self.category)
 
 
 class Member(models.Model):
