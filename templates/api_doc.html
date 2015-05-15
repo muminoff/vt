@@ -37,6 +37,13 @@
                                 <h4>VT API</h4>
                                 {% endblock %}
                             </span>
+                            <ul class="nav pull-left">
+                            {% for k, v in menus.items %}
+                                <li {% if v.active %}class="active"{% endif %}>
+                                    <a href="{% url k %}">{{ v.title }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
