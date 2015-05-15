@@ -33,7 +33,7 @@ def migrate():
 @task
 def fake_migrate():
     with cd(CODE_ROOT):
-        run('{} ./manage.py migrate core'.format(LOCAL_PYTHON))
+        run('{} ./manage.py migrate core --fake'.format(LOCAL_PYTHON))
 
 
 @task
