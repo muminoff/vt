@@ -29,7 +29,7 @@ class Section(models.Model):
     owner = models.ForeignKey('User', null=False, blank=False)
     name = models.CharField(max_length=64, null=False, blank=False, unique=True)
     description = models.CharField(max_length=255, null=False, blank=False)
-    category = models.CharField(max_length=64, null=False, blank=False)
+    category = models.ForeignKey('SectionCategory', null=False, blank=False)
     ordering_number = models.PositiveSmallIntegerField()
     created_date = models.DateTimeField(auto_now=True)
     last_updated = models.DateTimeField(auto_now_add=True)
