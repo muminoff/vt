@@ -34,7 +34,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    'pipeline.middleware.MinifyHTMLMiddleware',
+    # 'pipeline.middleware.MinifyHTMLMiddleware',
 )
 
 ROOT_URLCONF = 'vt.urls'
@@ -113,7 +113,7 @@ PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 PIPELINE_VERSIONING = 'pipeline.versioning.hash.MD5Versioning'
-PIPELINE_ENABLED = False
+PIPELINE_ENABLED = True
 PIPELINE_AUTO = True
 PIPELINE_VERSION = True
 
