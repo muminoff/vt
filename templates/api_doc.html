@@ -42,20 +42,19 @@
                 </div>
             {% endblock %}
 
-            <!-- Content -->
             <div id="content">
 
                 <br/>
                 <br/>
                 <br/>
                 <div class="page-header">
+
                     <h1>VT API</h1>
                     <hr>
                     <h2>Resources</h2>
                     <p>VT API has the following subresources. Click on a link to read the API documentation for accessing or modifying each resource.</p>
                     <h3>Users</h3>
                     <h3>Rooms</h3>
-
                     <hr>
 
                 <h2>Available formats</h2>
@@ -65,15 +64,13 @@
                   <li>YAML</li>
                 </ol>
 
-            <!-- END Content -->
-            
             <footer>
                 {% block footer %}
-                <!-- <p>Developed by <strong>muminoff</strong></p> -->
+                <p>Developed by <strong><a href="https://twitter.com/muminoff" target="_blank">muminoff</a></strong></p>
                 {% endblock %}
             </footer>
 
-        </div><!-- ./wrapper -->
+        </div>
 
         {% block script %}
             {% javascript 'jquery' %}
@@ -81,6 +78,7 @@
             {% javascript 'prettify' %}
             {% javascript 'default' %}
         {% endblock %}
+
     </body>
     {% endblock %}
 </html>
