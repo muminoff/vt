@@ -12,7 +12,9 @@ def api_doc(request):
 
 @api_view(['GET', 'POST'])
 def user_collection(request):
-
+    """
+    List all users
+    """
     if request.method == 'GET':
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
@@ -30,6 +32,9 @@ def user_collection(request):
 
 @api_view(['GET'])
 def user_element(request, pk):
+    """
+    Get individual user
+    """
     try:
         user = User.objects.get(pk=pk)
     except User.DoesNotExist:
