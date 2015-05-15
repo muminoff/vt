@@ -1,13 +1,8 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 SECRET_KEY = 'bao&&m9(6iiv_*73yl0@j+y_0j^-4c@z&7jw(m6r#pp+20^ipc'
-
-
 ALLOWED_HOSTS = ['*']
-
 
 BASE_APPS = (
     'django.contrib.admin',
@@ -73,14 +68,10 @@ DATABASES = {
 }
 
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
+LANGUAGE_CODE = 'en-us' 
+TIME_ZONE = 'UTC' 
+USE_I18N = True 
+USE_L10N = True 
 USE_TZ = True
 
 
@@ -94,7 +85,6 @@ STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
         'pipeline.finders.PipelineFinder',
-        # 'pipeline.finders.CachedFileFinder',
         )
 
 TEMPLATES = [
