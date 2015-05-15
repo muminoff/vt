@@ -14,10 +14,10 @@ class User(models.Model):
     pass
 
 
-class Announcement(models.Model):
+class Section(models.Model):
 
     class Meta:
-        db_table = 'announcements'
+        db_table = 'sections'
 
     pass
 
