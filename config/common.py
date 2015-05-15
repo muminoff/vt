@@ -153,3 +153,30 @@ PIPELINE_CSS = {
             },
     }
 
+PIPELINE_JS = {
+        'jquery': {
+            'source_filenames': (
+                'js/jquery.js',
+            ),
+            'output_filename': 'js/jquery.min.js',
+        },
+        'bootstrap': {
+            'source_filenames': (
+                'js/bootstrap.js',
+            ),
+            'output_filename': 'js/bootstrap.min.js',
+        },
+        'prettify': {
+            'source_filenames': (
+                'js/prettify.js',
+            ),
+            'output_filename': 'js/prettify.min.js',
+        },
+        'default': {
+            'source_filenames': (
+                'js/default.js',
+            ),
+            'output_filename': 'js/default.min.js',
+        },
+    }
+
