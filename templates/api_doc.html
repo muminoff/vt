@@ -1,7 +1,4 @@
-{% load url from future %}
-{% load staticfiles %}
-{% load rest_framework %}
-<!DOCTYPE html>
+{% load url from future %}{% load staticfiles %}{% load rest_framework %}{% load pipeline %}<!DOCTYPE html>
 <html>
     <head>
         {% block head %}
@@ -15,11 +12,11 @@
     
             {% block style %}
                 {% block bootstrap_theme %}
-                    <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap.min.css" %}"/>
-                    <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap-tweaks.css" %}"/>
+                    {% stylesheet 'bootstrap' %}
+                    {% stylesheet 'bootstrap-tweaks' %}
                 {% endblock %}
-                <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/prettify.css" %}"/>
-                <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/default.css" %}"/>
+                    {% stylesheet 'prettify' %}
+                    {% stylesheet 'default' %}
                 <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
             {% endblock %}
             

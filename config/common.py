@@ -24,6 +24,7 @@ LOCAL_APPS = (
 
 THIRD_PARTY_APPS = (
     'rest_framework',
+    'pipeline',
 )
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -87,6 +88,13 @@ STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
         )
 
+STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'pipeline.finders.PipelineFinder',
+        'pipeline.finders.CachedFileFinder',
+        )
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -107,3 +115,39 @@ TEMPLATES = [
         },
     },
 ]
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_VERSIONING = 'pipeline.versioning.hash.MD5Versioning'
+PIPELINE_ENABLED = True
+PIPELINE_AUTO = True
+PIPELINE_VERSION = True
+
+PIPELINE_CSS = {
+        'bootstrap': {
+            'source_filenames': (
+                'css/bootstrap.css',
+                ),
+            'output_filename': 'css/bootstrap.min.css',
+            },
+        'bootstrap-tweaks': {
+            'source_filenames': (
+                'css/bootstrap-tweaks.css',
+                ),
+            'output_filename': 'css/bootstrap-tweaks.min.css',
+            },
+        'prettify': {
+            'source_filenames': (
+                'css/prettify.css',
+                ),
+            'output_filename': 'css/prettify.min.css',
+            },
+        'default': {
+            'source_filenames': (
+                'css/default.css',
+                ),
+            'output_filename': 'css/default.min.css',
+            },
+    }
+
