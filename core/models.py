@@ -15,6 +15,16 @@ class User(models.Model):
         return u"{username} [{phone_number}]".format(username=self.username, phone_number=self.phone_number)
 
 
+class SectionCategory(models.Model):
+    name = models.CharField(max_length=64, null=False, blank=False, unique=True)
+    slug = models.SlugField()
+
+    class Meta:
+        db_table = 'section_categories'
+        ordering = ['name']
+
+
+
 class Section(models.Model):
     owner = models.ForeignKey('User', null=False, blank=False)
     name = models.CharField(max_length=64, null=False, blank=False, unique=True)
