@@ -5,6 +5,9 @@ from rest_framework.response import Response
 from core.models import User
 from core.serializers import UserSerializer
 
+def api_doc(request):
+    return render(request, 'api_doc.html')
+
 
 @api_view(['GET'])
 def user_collection(request):
