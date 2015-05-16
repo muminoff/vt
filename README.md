@@ -1,7 +1,5 @@
-Voditeli Tashkenta
-=======================
+# Voditeli Tashkenta
 
-This repository will not be maintained anymore
-----------------------------------------------
+### Backend server for VT Android app
 
-
+** Development stopped due to dissenting with group leaders **
