@@ -7,7 +7,7 @@ from core.models import User, Section
 from core.serializers import UserSerializer
 
 def api_doc(request):
-    return render(request, 'api_doc.html')
+    return render(request, 'restframework/api_doc.html')
 
 
 @api_view(['GET', 'POST'])
