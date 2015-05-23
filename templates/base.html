@@ -1,0 +1,63 @@
+{% load url from future %}{% load staticfiles %}{% load rest_framework %}{% load pipeline %}<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+    
+            {% block meta %}
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <meta name="robots" content="NONE,NOARCHIVE" />
+            {% endblock %}
+    
+            <title>{% block title %}VT API{% endblock %}</title>
+    
+            {% block style %}
+                {% block bootstrap_theme %}
+                    {% stylesheet 'bootstrap' %}
+                    {% stylesheet 'bootstrap-tweaks' %}
+                {% endblock %}
+                    {% stylesheet 'prettify' %}
+                    {% stylesheet 'default' %}
+                <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
+            {% endblock %}
+            
+        {% endblock %}
+    </head>
+
+    {% block body %}
+    <body class="{% block bodyclass %}{% endblock %} container">
+
+        <div class="wrapper">
+
+            {% block navbar %}
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                            <li><a href="/">Documentation</a></li>
+                            <li><a href="/users">Users</a></li>
+                            <li><a href="/section">Sections</a></li>
+                            <li><a href="/rooms">Rooms</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+            <div id="content">{% block content %}{% endblock %}</div>
+
+            <footer>
+                {% block footer %}
+                <p>Developed by <strong><a href="https://twitter.com/muminoff" target="_blank">muminoff</a></strong></p>
+                {% endblock %}
+            </footer>
+
+        {% block script %}
+            {% javascript 'jquery' %}
+            {% javascript 'bootstrap' %}
+            {% javascript 'prettify' %}
+            {% javascript 'default' %}
+        {% endblock %}
+
+    </body>
+    {% endblock %}
+</html>
