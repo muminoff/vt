@@ -38,13 +38,15 @@
                                     </a>
                                 {% endblock %}
                             </span>
-                            <ul class="nav pull-left">
-                            {% for k, v in menus.items %}
-                                <li {% if v.active %}class="active"{% endif %}>
-                                    <a href="{% url k %}">{{ v.title }}</a>
-                                </li>
-                            {% endfor %}
-                            </ul>
+                            <div class="nav-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    {% for k, v in menus.items %}
+                                    <li class="{% if v.active %}active{% endif %}">
+                                        <a href="{% url k %}">{{ v.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
