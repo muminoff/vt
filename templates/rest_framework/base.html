@@ -8,16 +8,15 @@
                 <meta name="robots" content="NONE,NOARCHIVE" />
             {% endblock %}
     
-            <title>{% block title %}VT API{% endblock %}</title>
+            <title>{% block title %}VT API Browser{% endblock %}</title>
     
             {% block style %}
                 {% block bootstrap_theme %}
-                    {% stylesheet 'bootstrap' %}
-                    {% stylesheet 'bootstrap-tweaks' %}
+                    <link rel="stylesheet" type="text/css" href="{% stylesheet "bootstrap" %}"/>
+                    <link rel="stylesheet" type="text/css" href="{% stylesheet "bootstrap-tweaks" %}"/>
                 {% endblock %}
-                    {% stylesheet 'prettify' %}
-                    {% stylesheet 'default' %}
-                <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
+                <link rel="stylesheet" type="text/css" href="{% stylesheet "prettify" %}"/>
+                <link rel="stylesheet" type="text/css" href="{% stylesheet "default" %}"/>
             {% endblock %}
             
         {% endblock %}
@@ -32,32 +31,117 @@
                 <div class="navbar navbar-inverse">
                     <div class="navbar-inner">
                         <div class="container-fluid">
-                            <ul class="nav navbar-nav">
-                            <li><a href="/">Documentation</a></li>
-                            <li><a href="/users">Users</a></li>
-                            <li><a href="/section">Sections</a></li>
-                            <li><a href="/rooms">Rooms</a></li>
+                            <span>
+                                {% block branding %}
+                                    <a class='brand' rel="nofollow" href='#'>
+                                        VT API Browser 
+                                    </a>
+                                {% endblock %}
+                            </span>
+                            <ul class="nav pull-left">
+                            {% for k, v in menus.items %}
+                                <li {% if v.active %}class="active"{% endif %}>
+                                    <a href="{% url k %}">{{ v.title }}</a>
+                                </li>
+                            {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
             {% endblock %}
 
-            {% block body %}{% endblock %}
+            <!-- Content -->
+            <div id="content">
 
+                <br/>
+                <br/>
+                <br/>
+                <div class="page-header">
+                    <h1>VT API</h1>
+                    <hr>
+                    <p>The VT REST API allows you to query resources from Cassandra database including; tickets, attachments, and comments. You can also do some fancy things like test endpoints with using builtin HTML forms and receive supported formats.</p>
+                    <p>Since the API is based on REST principles, it's very easy to write and test applications. You can use your browser to access URLs, and you can use pretty much any HTTP client in any programming language to interact with the API.</p>
+                    <hr>
+                    <h2>Base URL</h2>
+                    <p>All URLs referenced in the documentation have the following base:</p>
+                    <pre class="prettyprint lang-py"><code>http://{{groupware_domain}}/helpdesk/api</code></pre>
+                    <p>VT REST API is served over HTTPS in production servers (except development servers like <code>vietnam.hanbiro.net</code>).</p>
+                    <hr>
+                    <h2>Resources</h2>
+                    <p>VT API has the following subresources. Click on a link to read the API documentation for accessing or modifying each resource.</p>
+
+                    <h3>Endpoints</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/users</td>
+                                <td>GET</td>
+                                <td>Returns list of all users</td>
+                            </tr>
+                            <tr>
+                                <td>/users</td>
+                                <td>POST</td>
+                                <td>Creates user</td>
+                            </tr>
+                            <tr>
+                                <td>/users/{user_phone_number}</td>
+                                <td>DELETE</td>
+                                <td>Deletes user by requested user phone number (user must be a real phone number owner)</td>
+                            </tr>
+                            <tr>
+                                <td>/comments/latest</td>
+                                <td>GET</td>
+                                <td>Get latest 10 comments from database</td>
+                            </tr>
+                            <tr>
+                                <td>/search/?q={search_query}</td>
+                                <td>GET</td>
+                                <td>Searches database and returns result if found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Permissions</h2>
+                <h3>User</h3>
+                <ol>
+                    <li>User can be deleted only by a phone number owner or admin.</li>
+                    <li><code>user_phone_number</code> is read only attribute.</li>
+                </ol>
+
+                <br/>
+                <br/>
+
+                <h2>Available formats</h2>
+                <ol>
+                  <li>JSON</li>
+                  <li>XML</li>
+                  <li>YAML</li>
+                </ol>
+
+            <!-- END Content -->
+            
             <footer>
                 {% block footer %}
-                <p>Developed by <strong><a href="https://twitter.com/muminoff" target="_blank">muminoff</a></strong></p>
+                    <p>Developed by <strong>muminoff</strong></p>
                 {% endblock %}
             </footer>
 
-        {% block script %}
-            {% javascript 'jquery' %}
-            {% javascript 'bootstrap' %}
-            {% javascript 'prettify' %}
-            {% javascript 'default' %}
-        {% endblock %}
+        </div><!-- ./wrapper -->
 
+        {% block script %}
+            <script src="{% javascript "jquery" %}"></script>
+            <script src="{% javascript "bootstrap" %}"></script>
+            <script src="{% javascript "prettify" %}"></script>
+            <script src="{% javascript "default" %}"></script>
+        {% endblock %}
     </body>
     {% endblock %}
 </html>
