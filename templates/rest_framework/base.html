@@ -12,11 +12,11 @@
     
             {% block style %}
                 {% block bootstrap_theme %}
-                    <link rel="stylesheet" type="text/css" href="{% stylesheet "bootstrap" %}"/>
-                    <link rel="stylesheet" type="text/css" href="{% stylesheet "bootstrap-tweaks" %}"/>
+                    {% stylesheet "bootstrap" %}
+                    {% stylesheet "bootstrap-tweaks" %}
                 {% endblock %}
-                <link rel="stylesheet" type="text/css" href="{% stylesheet "prettify" %}"/>
-                <link rel="stylesheet" type="text/css" href="{% stylesheet "default" %}"/>
+                {% stylesheet "prettify" %}
+                {% stylesheet "default" %}
             {% endblock %}
             
         {% endblock %}
@@ -137,10 +137,10 @@
         </div><!-- ./wrapper -->
 
         {% block script %}
-            <script src="{% javascript "jquery" %}"></script>
-            <script src="{% javascript "bootstrap" %}"></script>
-            <script src="{% javascript "prettify" %}"></script>
-            <script src="{% javascript "default" %}"></script>
+            {% javascript "jquery" %}
+            {% javascript "bootstrap" %}
+            {% javascript "prettify" %}
+            {% javascript "default" %}
         {% endblock %}
     </body>
     {% endblock %}
